@@ -5,7 +5,7 @@ import (
 	"net/url"
 )
 
-const myurl string = "https://lco.dev:3000/learn?coursename=reactjs&paymentid=ghbj456"
+const myurl string = "https://lco.dev:1111/learn?coursename=reactjs&paymentid=ghbj456"
 
 func main() {
 	fmt.Println("Welcome to handling URLs in Golang")
