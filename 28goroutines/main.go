@@ -14,7 +14,9 @@ import (
 	"sync"
 )
 
+var signals = []string{"test"}
 var wg sync.WaitGroup //pointer
+var mut sync.Mutex    //pointer
 
 func main() {
 	// go greeter("Hello") //if sleep is not given than only world will be printed
@@ -29,6 +31,7 @@ func main() {
 		wg.Add(1) // 1=no. of goroutines
 	}
 	wg.Wait()
+	fmt.Println(signals)
 }
 
 // func greeter(s string) {
@@ -43,6 +46,9 @@ func getStatusCode(endpoint string) {
 	if err != nil {
 		fmt.Println("OOPS in endpoint")
 	} else {
+		mut.Lock()
+		signals = append(signals, endpoint)
+		mut.Unlock()
 		fmt.Printf("%d status code for %s\n", res.StatusCode, endpoint)
 	}
 }
